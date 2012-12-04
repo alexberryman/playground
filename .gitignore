@@ -13,3 +13,4 @@ build
 *.log
 migrations/
 static_collection/
+.idea/*
