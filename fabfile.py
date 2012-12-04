@@ -8,7 +8,7 @@ from fabric.api import *
 import time
 
 # globals
-env.prj_name = 'project_name' # no spaces!
+env.prj_name = 'playground' # no spaces!
 env.sudoers_group = 'wheel'
 env.use_photologue = False # django-photologue gallery module
 env.use_feincms = True

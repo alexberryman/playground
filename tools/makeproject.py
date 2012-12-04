@@ -21,7 +21,7 @@ palette = [
 ]
 
 questions = [
-    ('project_name', _(u'Name of the project? (same as user on webserver and database!)'), 'project_name'),
+    ('playground', _(u'Name of the project? (same as user on webserver and database!)'), 'playground'),
     ('project_root', _(u'Local project root?'), '~/workspace/'),
     ('server_domain', _(u'Name of your domain? (without server name)'), 'example.com'),
     ('server_name', _(u'Name of your web server? (without domain name)'), 'www'),
@@ -35,7 +35,7 @@ questions = [
 
 # make directory below workspace
 # copy (or git clone) generic_django_project
-# replace "project_name" in files...
+# replace "playground" in files...
 # git init
 
 # use feincms, medialibrary, photologue, daemontools, supervisord, celery, nginx/apache, mysql/postgresql ?

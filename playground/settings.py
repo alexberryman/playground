@@ -6,10 +6,10 @@ import os, sys
 _ = lambda s: s
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-PROJECT_NAME = os.path.split(PROJECT_ROOT)[-1]
+playground = os.path.split(PROJECT_ROOT)[-1]
 
 rel = lambda p: os.path.normpath(os.path.join(PROJECT_ROOT, p)) # this is release and virtualenv dependent
-rootrel = lambda p: os.path.normpath(os.path.join('/var/www', PROJECT_NAME, p)) # this is not
+rootrel = lambda p: os.path.normpath(os.path.join('/var/www', playground, p)) # this is not
 
 sys.path += [PROJECT_ROOT, os.path.join(PROJECT_ROOT,'lib/python2.5/site-packages')]
 
@@ -95,7 +95,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': False,
         },
-        PROJECT_NAME: {
+        playground: {
             'handlers': ['console', 'file', 'error_file', 'mail_admins'],
             'level': 'INFO',
             #'filters': ['special']
@@ -110,7 +110,7 @@ LOGGING = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/var/tmp/django_cache/%s' % PROJECT_NAME,
+        'LOCATION': '/var/tmp/django_cache/%s' % playground,
         'TIMEOUT': 600,
     }
 }
@@ -130,13 +130,13 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DEFAULT_FROM_EMAIL = '%s@%s' % (PROJECT_NAME, YOUR_DOMAIN)
+DEFAULT_FROM_EMAIL = '%s@%s' % (playground, YOUR_DOMAIN)
 SERVER_EMAIL = 'error-notify@%s' % YOUR_DOMAIN
 
-EMAIL_SUBJECT_PREFIX = '[%s] ' % PROJECT_NAME
+EMAIL_SUBJECT_PREFIX = '[%s] ' % playground
 EMAIL_HOST = 'mail.%s' % YOUR_DOMAIN
 EMAIL_PORT = 25
-EMAIL_HOST_USER = '%s@%s' % (PROJECT_NAME, YOUR_DOMAIN)
+EMAIL_HOST_USER = '%s@%s' % (playground, YOUR_DOMAIN)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
@@ -148,8 +148,8 @@ EMAIL_USE_TLS = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': PROJECT_NAME,                      # Or path to database file if using sqlite3.
-        'USER': PROJECT_NAME,                      # Not used with sqlite3.
+        'NAME': playground,                      # Or path to database file if using sqlite3.
+        'USER': playground,                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -175,10 +175,10 @@ LOCALE_PATHS = (
 
 SITE_ID = 1
 
-ROOT_URLCONF = '%s.urls' % PROJECT_NAME
+ROOT_URLCONF = '%s.urls' % playground
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = '%s.wsgi.application' % PROJECT_NAME
+WSGI_APPLICATION = '%s.wsgi.application' % playground
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -235,7 +235,7 @@ INSTALLED_APPS = [
     'feincms',
     'feincms.module.page',
     'feincms.module.medialibrary',
-    PROJECT_NAME,
+    playground,
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -316,16 +316,16 @@ FEINCMS_ADMIN_MEDIA = '%sfeincms/' % STATIC_URL
 FEINCMS_ADMIN_MEDIA_HOTLINKING = True
 #FEINCMS_MEDIALIBRARY_UPLOAD_TO
 # obsolete with FeinCMS 1.4
-#FEINCMS_MEDIALIBRARY_ROOT = rootrel('') #'/var/www/project_name/medialibrary/'
+#FEINCMS_MEDIALIBRARY_ROOT = rootrel('') #'/var/www/playground/medialibrary/'
 #FEINCMS_MEDIALIBRARY_URL = '/' #'/medialibrary/'
 
 # schedule
 FIRST_DAY_OF_WEEK = 1
 
 # admin_tools
-ADMIN_TOOLS_MENU = '%s.menu.CustomMenu' % PROJECT_NAME
-ADMIN_TOOLS_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % PROJECT_NAME
-ADMIN_TOOLS_APP_INDEX_DASHBOARD = '%s.dashboard.CustomAppIndexDashboard' % PROJECT_NAME
+ADMIN_TOOLS_MENU = '%s.menu.CustomMenu' % playground
+ADMIN_TOOLS_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % playground
+ADMIN_TOOLS_APP_INDEX_DASHBOARD = '%s.dashboard.CustomAppIndexDashboard' % playground
 
 # ==============================================================================
 # host specific settings

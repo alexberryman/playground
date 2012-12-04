@@ -60,10 +60,10 @@ local:
 ------
 
 * copy `generic_project`
-* replace all occurrences of lowercase "project_name" with your project name. this is also the webserver and database server username!
+* replace all occurrences of lowercase "playground" with your project name. this is also the webserver and database server username!
 * check the settings in manage.py_, fabfile.py_, gunicorn-settings.py_, settings.py_, settings_local.py_, supervisor.ini_ or service-run.sh_
 * set up an email account for your project’s error messages and configure it in settings.py_
-* if you use Nginx, change the internal port in nginx.conf_ (``fastcgi_pass 127.0.0.1:8001;``); I use "8 + last 3 numbers of UID" (UIDs start at 1000 on Debian): ``id -u project_name``
+* if you use Nginx, change the internal port in nginx.conf_ (``fastcgi_pass 127.0.0.1:8001;``); I use "8 + last 3 numbers of UID" (UIDs start at 1000 on Debian): ``id -u playground``
 * ``git init``, always commit all changes
 * ``manage syncdb`` (initialize south)
 * ``fab webserver setup`` (once)
@@ -76,8 +76,8 @@ I suggest to use makeuser.sh_ to create system and database accounts. Otherwise:
 
 * create user and sudo-enable it (I suggest via a group like ``wheel``, but you can also add the user to sudoers)::
   
-    adduser project_name
-    adduser project_name wheel
+    adduser playground
+    adduser playground wheel
 
 * create database user and database (schema) ::
   
@@ -88,9 +88,9 @@ I suggest to use makeuser.sh_ to create system and database accounts. Otherwise:
     update user set password=password('...') where user='root';
   
     # create user and database for our project:
-    create user 'project_name'@'localhost' identified by '...';
-    create database project_name character set 'utf8';
-    grant all privileges on project_name.* to 'project_name'@'localhost';
+    create user 'playground'@'localhost' identified by '...';
+    create database playground character set 'utf8';
+    grant all privileges on playground.* to 'playground'@'localhost';
   
     flush privileges;
     quit;
@@ -160,8 +160,8 @@ Modules:
 
 .. _makeuser.sh: blob/master/tools/makeuser.sh
 .. _manage.py: blob/master/manage.py
-.. _settings.py: blob/master/project_name/settings.py
-.. _settings_local.py: blob/master/project_name/settings_local.py
+.. _settings.py: blob/master/playground/settings.py
+.. _settings_local.py: blob/master/playground/settings_local.py
 .. _gunicorn-settings.py: blob/master/gunicorn-settings.py
 .. _fabfile.py: blob/master/fabfile.py
 .. _supervisor.ini: blob/master/supervisor.ini

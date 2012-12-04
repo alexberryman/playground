@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
 
-verbose_name = _(u'project_name')
-verbose_name_plural = _(u'project_names')
+verbose_name = _(u'playground')
+verbose_name_plural = _(u'playgrounds')
 
 # see http://djangopatterns.com/patterns/app_construction/version_reporting/
 __version_info__ = {

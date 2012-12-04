@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # service runner for daemontools
-SITE=project_name
+SITE=playground
 SITEUSER=$SITE
 # PORT is 8 + last 3 numbers of user ID (starting at 1000 on Debian)
 PORT=`id -u $SITE`
